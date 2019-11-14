@@ -6,7 +6,7 @@
 work in progress
 
 
-![Architecture](/uploads/ppdrone/icarus_architecture.png "Architecture"){.align-center}
+![Architecture](/uploads/ppdrone/icarus_architecture_final.png "Architecture"){.align-center}
 # Running an experiment
 
 work in progress
