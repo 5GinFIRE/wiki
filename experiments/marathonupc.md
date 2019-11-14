@@ -32,7 +32,7 @@ The build script creates all the following VNFD and NS files:
 
 File 6 (marathon_ns.tar.gz) is the basic experiment consisting of a 1 Base Station, 1 Hydra Server and 3 User Equipments.
 
-To execute the build script just type:
+To execute the build script (in case you make modifications) just type:
 
 ```
 ./build
@@ -40,7 +40,7 @@ To execute the build script just type:
 
 ## osm
 
-The osm script is a simple utilitaria to easen the task of installing, uninstalling, creating, and deleting VNDFs and NSDs.
+The osm script is a simple utilitaria to easen the task of installing, uninstalling, creating, and deleting VNFDs and NSDs.
 Type the following command to get a detailed usage of it:
 ```
 ./osm l
@@ -67,6 +67,13 @@ sudo python rsmf.py
 
 
 ### Testing
+
+- Connect to "marathon_vbs", "marathon_vue1", "marathon_vue2" and "marathon_vue3" VMs using ssh.
+- In "marathon_vbs" open a browser (Firefox is already installed) and type (with the vbs_ip):
+```
+192.168.5.94:8888
+```
+The RSMF main page should appear in the browser, and you can start configuring Slices.
 
 - From "marathon_vbs" ping  the tap interfaces of "marathon_vue1" with IPs 1.1.1.2, and "marathon_vue2" with IPs 2.2.2.2, and "marathon_vue3" with IPs 2.2.2.3.
 ```
