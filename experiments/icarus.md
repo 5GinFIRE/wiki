@@ -37,9 +37,5 @@ Each VNF has the following resources:
 
 asd
 
-# Example Results
-
-asd
-
 
 
