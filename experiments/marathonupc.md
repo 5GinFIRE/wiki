@@ -68,7 +68,7 @@ sudo python rsmf.py
 
 ### Testing
 
-- Connect to "marathon_vbs", "marathon_vue1", "marathon_vue2" and "marathon_vue3" VMs using ssh.
+- Connect to "marathon_vbs" (Virtual VBS VNF), "marathon_vue1" (Virtual VUE#1 VNF), "marathon_vue2" (Virtual VUE#2 VNF) and "marathon_vue3" (Virtual VUE#3 VNF) VMs using ssh.
 - In "marathon_vbs" open a browser (Firefox is already installed) and type (with the vbs_ip):
 ```
 192.168.5.94:8888
