@@ -38,9 +38,17 @@ Each VNF has the following resources:
 After successfully deploying the experiment in PPDRONE stasionary testbed the steps to verify that it is running are:
 
 1. Login to 5GinFIRE OpenVPN
-login to the Jump Machine: ssh using credentials;
-login to VNF server from the Jump Machine: ssh using credentials;
-run a program of the server application in VNF:
+2. SSH to 5GinFIRE Jump Machine
+3. SSH to each VNF from the Jump Machine using username:ubuntu, password:qoe
+4. Verify that everything is running
 
-
-
+INFOLYSIS IoT Proxy
+```text
+test1
+test2
+```
+INFOLYSIS vDPI
+INFOLYSIS HTTP
+INFOLYSIS CoAP
+INFOLYSIS MQTT
+INFOLYSIS IoT vGW
