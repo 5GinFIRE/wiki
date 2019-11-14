@@ -57,7 +57,9 @@ nohup python /home/ubuntu/sdn-app.py &
 ```
 
 INFOLYSIS HTTP
-N/A
+```text
+service apache2 start
+```
 
 INFOLYSIS CoAP
 ```text
