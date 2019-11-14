@@ -35,7 +35,12 @@ Each VNF has the following resources:
 * VCpu : 1
 # Running the experiment
 
-asd
+After successfully deploying the experiment in PPDRONE stasionary testbed the steps to verify that it is running are:
+
+1. Login to 5GinFIRE OpenVPN
+login to the Jump Machine: ssh using credentials;
+login to VNF server from the Jump Machine: ssh using credentials;
+run a program of the server application in VNF:
 
 
 
