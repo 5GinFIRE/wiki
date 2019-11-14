@@ -44,11 +44,32 @@ After successfully deploying the experiment in PPDRONE stasionary testbed the st
 
 INFOLYSIS IoT Proxy
 ```text
-test1
-test2
+nohup python /home/ubuntu/server-coap.py &
+nohup python /home/ubuntu/server-mqtt.py &
+nohup python /home/ubuntu/test-server.py &
 ```
+
 INFOLYSIS vDPI
+```text
+nohup python /home/ubuntu/mserver.py &
+nohup python /home/ubuntu/dpi-app.py &
+nohup python /home/ubuntu/sdn-app.py &
+```
+
 INFOLYSIS HTTP
+N/A
+
 INFOLYSIS CoAP
+```text
+nohup python /home/ubuntu/mizukek/server1.py &
+```
+
 INFOLYSIS MQTT
+```text
+nohup python /home/ubuntu/mqtt-server.py &
+```
+
 INFOLYSIS IoT vGW
+```text
+nohup python /home/ubuntu/masterserver2.py &
+```
