@@ -1,4 +1,4 @@
-<!-- TITLE: Icarus -->
+![5 Ginfire Logo 3](/uploads/5-ginfire-logo-3.png "5 Ginfire Logo 3")<!-- TITLE: Icarus -->
 <!-- SUBTITLE: A quick summary of Icarus -->
 
 # Description of the VNF
