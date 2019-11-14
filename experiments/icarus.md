@@ -12,9 +12,9 @@ Our main objective of the proposed SDN/NFV-enabled IoT ICARUS experiment is to e
 ![Architecture](/uploads/ppdrone/icarus_architecture_final.png "Architecture"){.align-center}
 # Running an experiment
 The VMs from PPDR ONE are used to generate IoT data for the ICARUS experiment. 
-•	qMON Agent : This is the probe actually doing the measurements and providing the data in XML format. This can scaled up to more qMON Agents in order to have larger amount of IoT data available, as already depicted in the topology of Figure 9.
-•	qMON Server: This is the measurement endpoint for qMON Agents, it can serve many qMON Agents at the same time.
-•	qMON Collector: This is where the XMLs with the results are uploaded and every one minute are parsed in order for them to be saved to the qMON database. In this VM, INFOLYSiS custom code is being executed in order to extract the data from the XMLs (before being saved to the qMON database). The extracted data are encapsulated in one of the three protocols that are part of ICARUS experiment (HTTP, CoAP, MQTT) and then they are transmitted to INFOLYSiS IoT Proxy.
+* qMON Agent : This is the probe actually doing the measurements and providing the data in XML format. This can scaled up to more qMON Agents in order to have larger amount of IoT data available, as already depicted in the topology of Figure 9.
+* qMON Server: This is the measurement endpoint for qMON Agents, it can serve many qMON Agents at the same time.
+* qMON Collector: This is where the XMLs with the results are uploaded and every one minute are parsed in order for them to be saved to the qMON database. In this VM, INFOLYSiS custom code is being executed in order to extract the data from the XMLs (before being saved to the qMON database). The extracted data are encapsulated in one of the three protocols that are part of ICARUS experiment (HTTP, CoAP, MQTT) and then they are transmitted to INFOLYSiS IoT Proxy.
 
 
 The VNFs setup by INFOLYSiS were used for executing the experiment and there are 6 VNFs in total :
