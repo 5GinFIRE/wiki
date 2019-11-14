@@ -71,7 +71,6 @@ The following pages present different topics regarding 5GinFIRE services.
 ## Advanced functionalities
 
 [Slicenet-5g](functionalities/slicenet)
-[Autoscaler] (functionalities/autoscaler)
 
 ## Representative Experiments by TestBed Providers
 
