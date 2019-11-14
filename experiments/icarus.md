@@ -79,7 +79,7 @@ nohup python /home/ubuntu/masterserver2.py &
 # Experiment Results
 The interoperable IoT data are stored in a MySQL database in INFOLYSiS IoT vGW.
 
-`Ways of accesing the IoT data:
+Ways of accesing the IoT data:
 1. Directly by logging in the database using username: root, password:icarus
-2. Through the Dashboard at <IoT GW IP address>/infolysisiot/ by using the password: icarus
-3. With the REST API by using HTTP GET: http://<IoT GW IP address>/infolysisiot/api/iot.php?limit=<number of IoT data to fetch>&protocol=<original protocol of data HTTP/COAP/MQTT>&source=<IP address that the data originate from>&type=<type of IoT data>`
+2. Through the Dashboard at < IoT GW IP address >/infolysisiot/ by using the password: icarus
+3. With the REST API by using HTTP GET: http://< IoT GW IP address >/infolysisiot/api/iot.php?limit=< number of IoT data to fetch >&protocol=< original protocol of data HTTP/COAP/MQTT >&source=< IP address that the data originate from >&type=< type of IoT data >
