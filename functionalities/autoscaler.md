@@ -11,7 +11,7 @@ The following figure depicts the high-level architecture of OSM’s (R5) stock a
 
 ![Figure 1](/uploads/autoscaler/autoscaler-picture-1.png "autoscaler-picture-1.png")
  
-Figure 1 High level architecture of OSM stock (default) autoscaler
+**Figure 1 High level architecture of OSM stock (default) autoscaler**
 
 
 
@@ -55,7 +55,7 @@ The following diagram presents the architecture of our predictive autoscaler. As
 ![Figure 2](/uploads/autoscaler/autoscaler-picture-2.png "autoscaler-picture-2.png")
 
 
-Figure 2 Architecture of OSM_Autoscaler
+**Figure 2 Architecture of OSM_Autoscaler**
  
 	
 
@@ -65,15 +65,18 @@ To use OSM_Autoscaler, the following steps must be followed.
 
 Prerequisites:
 
-* Include in your VNFD a scaling-group descriptor with scaling-type field set to “manual”. Example of a scaling-group descriptor:
+1. Include in your VNFD a scaling-group descriptor with scaling-type field set to “manual”. Example of a scaling-group descriptor:
 
 ![Figure 3](/uploads/autoscaler/autoscaler-picture-3.png "autoscaler-picture-3.png")
  
-Figure 3 Scaling-group descriptor
+**Figure 3 Scaling-group descriptor**
 
 The description of the scaling settings follow the OSM information model and they are explained below: 
+
 •	max/min-instance-count: The maximum/minimum number of scaling operations allowed. For example, if our VNF has initially 1 VDU, we can scale-out at maximum 11 additional VDUs. We selected this limit according to our OpenStack resources.
+
 •	cooldown-time: The time (after a scaling operation) when no additional operations are allowed.
+
 •	scale-in/scale-out-threshold/relational-operation: These settings are self-explanatory. If CPU utilization drops below 10%, a scale-in operation will be triggered. Conversely, if CPU utilization exceeds 60% a scale-out operation will be triggered.
 
 •	vnf-monitoring-param-ref: The name of the monitoring parameter, corresponding to cpu_util metric of OpenStack’s telemetry system.
@@ -84,9 +87,9 @@ The description of the scaling settings follow the OSM information model and the
 
 •	(vdu) count: The number of VDUs to commission/decommission with each scale out/in operation.
 
-Install your host machine (Linux OS recommended) with the Docker engine. 
+2. Install your host machine (Linux OS recommended) with the Docker engine. 
 
-* Ensure that OSM is reachable from your host system.
+3. Ensure that OSM is reachable from your host system.
 
 ## 2.1 Installation guide
 
