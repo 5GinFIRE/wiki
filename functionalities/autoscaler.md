@@ -12,6 +12,12 @@ The following figure depicts the high-level architecture of OSM’s (R5) stock a
 ![Figure 1](/uploads/autoscaler/autoscaler-picture-1.png "autoscaler-picture-1.png")
  
 Figure 1 High level architecture of OSM stock (default) autoscaler
+
+
+![Figure 2](/uploads/autoscaler/autoscaler-picture-2.png "autoscaler-picture-2.png")
+
+![Figure 2](/uploads/autoscaler/autoscaler-picture-2.png "autoscaler-picture-2.png")
+
 For a VNF that includes a scaling descriptor, each VDU is monitored individually for the selected metric. Based on the retrieved metrics, the stock autoscaler can trigger a scale in or a scale out operation. For example, if at some point in time a VNF employs 3 VDUs with respective CPU loads 62% (VDU1), 93% (VDU2), 80% (VDU3) and the scale-out threshold is set to 60%, then the MON module (see above diagram) will place three scale-out alarm notifications in the Kafka bus. However, if the cooldown parameter is in use within the OSM configuration, only one of these alarms will result to an actual scale-out operation. For the rest of the alarms, the POL module will report that not enough time has passed since the last scale-out operation. Hence, it will skip the scaling request.
 
 In the following, we will answer fair questions that have arosen by the 5GINFIRE consortium in relation with the cooldown parameter and how it affects our implementation and/or its comparison with the OSM default autoscaler which must operate with the cooldown mechanism.
