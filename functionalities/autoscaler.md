@@ -3,9 +3,9 @@
 
 # Autoscaler
 
-1	Description of functionalities
+# 1	Description of extension
 
-1.1 How OSM’s stock autoscaler operates
+### Background work: How OSM’s stock autoscaler operates
 
 The following figure depicts the high-level architecture of OSM’s (R5) stock autoscaler.
 
@@ -41,15 +41,14 @@ Further to the above, there is a bug in OSM 5 release due to which, for a VDU th
 Answer: This statemenet is very accurate. It would not be possible that the default approach works without a defined cooldown parameter.
 
 
-1.2 How OSM_Autoscaler  operates
+### How our predictive OSM_Autoscaler  operates
 
 As explained in the previous section, OSM’s stock autoscaler respects the cooldown timer and thus it has to wait till the next evaluation interval in order to perform any additional scaling actions. However, should we configure the system with the manual scaling option (using the REST API of the NBI module) we are not restricted by the cooldown timer and this way one an issue as many scaling requests as required. This provides the opportunity to employ predictive algorithms (e.g. Holt-Winters, RNN, ARIMA) in order to predict sharp changes in the system’s load and accordingly undertake better performant scaling decisions.  As an example, if the scale-out threshold is set to 60 (per VDU) and the OSM_Autoscaler i) sees that the current number of VDUs is three and ii) the predicted total load (by the forecasting algorithm implemented inside OSM_Autoscaler) is 250, the OSM_Autoscaler will decide that two additional VDUs (remember that we have 3 VDUs supporting max 180 total load, thus with a predicted total load of 250 we shall need 3+2 VDUs supporting total load 5x60=300 which serves the requirements of the prediction of 250) are needed to support the raising load more efficiently (so that all VDUs have a load below the defined threshold of 60). Therefore, the OSM_Autoscaler trigger two scale out operations to cope with the phenomenon of the load increase. Analogous advantages are offered by the OSM_Autoscaler upon load decrease phenomena, where by our solution ‘shuts down’ faster unnecessary VDUs, saving energy to the NFV cloud provider.
 
 The following subsection provides the high level architecture of our OSM_Autoscaler. The technical details of its implementation are described in detail in Deliverable D2 “Implementation report and operation plan”.
 
-1.2 Architecture of OSM_Autoscaler
+### Architecture of OSM_Autoscaler
 
-1.2.1 Architecture overview
 
 The following diagram presents the architecture of our predictive autoscaler. As we can observe, it adds predictive functionality to OSM through the implementation of three main containters: i) the Metrics Collector container, ii) the Predictor container; and, iii) the PostgreSQL container. For a detailed description on the functionality of each container, the reader may refer to Deliverable D2.
 
