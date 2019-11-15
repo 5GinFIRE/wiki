@@ -91,10 +91,10 @@ Install your host machine (Linux OS recommended) with the Docker engine.
 ## 2.1 Installation guide
 
 
-1.	Clone OSM_Autoscaler repo:
+1. Clone OSM_Autoscaler repo:
 $ git clone https://github.com/5GinFIRE/OSM_Autoscaler.git
 
-2.	Build the Docker containers:
+2. Build the Docker containers:
 
 $ cd prediction/
 prediction$ docker build -t 5ginfire_predictors -f Dockerfile .
@@ -102,18 +102,18 @@ prediction$ cd ../metrics_manager/
 metrics_manager$ docker build -t 5ginfire_metric_collector -f Dockerfile .
 metrics_manager$ cd ..
 
-3.	Initialize Docker swarm:
+3. Initialize Docker swarm:
 
 $ docker swarm init
 
-4.	Create an overlay network for Docker swarm:
+4. Create an overlay network for Docker swarm:
 $ docker network create -d overlay –scope swarm gateway
 
-5.	Deploy the docker stack:
+5. Deploy the docker stack:
 
 $ docker stack deploy -c docker-compose.yaml mystack
 
-	The OSM_Autoscaler stack should now be up and running. You may now proceed to configuration as described below in section 2.2.
+**The OSM_Autoscaler stack should now be up and running. You may now proceed to configuration as described below in section 2.2.**
 
 ## 2.2 Configuration
 
