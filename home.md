@@ -67,6 +67,8 @@ The following pages present different topics regarding 5GinFIRE services.
 ### 11. P4in5G
 [5GinFIRE P4in5G](experiments/p4in5G)
 
+### 12. Security 5G Experiment Example
+[Security 5G Experiment Example](experiments/security5g)
 
 ## Advanced functionalities
 
