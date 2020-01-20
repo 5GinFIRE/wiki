@@ -70,6 +70,10 @@ The following pages present different topics regarding 5GinFIRE services.
 ### 12. Security 5G Experiment Example
 [Security 5G Experiment Example](experiments/security5g)
 
+### 13. CV2XinFIRE 
+[CV2XinFIRE Experiment Example](experiments/cv2xinfire)
+
+
 ## Advanced functionalities
 
 [Slicenet-5g](functionalities/slicenet)
