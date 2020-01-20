@@ -73,6 +73,9 @@ The following pages present different topics regarding 5GinFIRE services.
 ### 13. CV2XinFIRE 
 [CV2XinFIRE Experiment Example](experiments/cv2xinfire)
 
+### 14. Tourist Eyes
+[Tourist Eyes](experiments/TouristEyes)
+
 
 ## Advanced functionalities
 
