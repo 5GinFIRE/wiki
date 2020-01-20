@@ -26,7 +26,7 @@ https://feron-tech.com/
 The primary high-level concept that CV2XinFIRE tries to accomplish, is to successfully setup a real vehicle to vehicle or vehicle to ‘X’ communication, and gather different statistics, assisted and initiated by the 5GinFIRE Cloud.
 The designed solution and involved entities are described by the following figure.
 
-
+![Figue 1](/uploads/cv-2-x/picture-1.png "Figure 1")
 
 As depicted from the overall experiment configurations figure, there are mainly 2 involved VxFs and 2 OBU sets. The OBUs are already part of the 5GinFIRE platform and there is no need of any kind of re-deployment. The experimenters may have access to the OBUs upon request, however, there are limited interventions/modifications that can be made.
 The information flow in the experiment can be described by the following steps. In the presented data flow, the following entities are identified:
