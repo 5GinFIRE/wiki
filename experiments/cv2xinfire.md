@@ -72,6 +72,7 @@ The modem may be (indicatively) used as:
 •	A tool for education/training purposes
 The modem development and usage lifecycle are shown in the Figure below.
 
+![Figue 2](/uploads/cv-2-x/picture-2.png "Figure 2")
 
 The modem consists of a single binary application and a set of text-based configuration files, allowing configuring different modem operation modes and scenarios. 
 The binary runs in standard x86 hosts (various forms are supported such as desktops, laptops or SBCs), equipped with: 
@@ -89,8 +90,22 @@ In order to run and use the C-V2X software modem, the binary file is executed wi
 •	Runtime-level parameters, which configure experiment-specific operations, such as the sidelink protocol used for data transmission (discovery/communications), debugging options, reporting modes, and more importantly the interfaces with external services, i.e. UDP and/or ZMQ.
 In the following tables we provide a list of the main configurable parameters available, a short explanation and an example configuration for each one.
 
+![Figue 3](/uploads/cv-2-x/capture-1.png "Figure 3")
+![Figue 3](/uploads/cv-2-x/capture-2.png "Figure 3")
+![Figue 3](/uploads/cv-2-x/capture-3.png "Figure 3")
+
+Configuration file examples can be found in the experiment VxFs.
+VxFs:
+The previous analysis implied that there are two VxFs executed when deploying the experiment. Nevertheless, as far as the participated VxFs there are two different options regarding the deployment:
+1.	Two (2) standalone Single-VNF instances or
 
 
+![Figue 3](/uploads/cv-2-x/picture-3.png "Figure 3")
+
+2.	One (1) Multiple-VNF instance which creates both needed VxFs
+
+
+![Figue 4](/uploads/cv-2-x/picture-4.png "Figure 4")
 
 There is also a third option, where a single VxF is used to host all functionalities – operating as data generator as well as a measurement analysis and presentation VxF.
 The data generator VxF runs the following tasks: 
@@ -262,6 +277,7 @@ $ cd ~/OpenC2X/build/ldb/db
 The database name is automatically generated as “ldm-ExpNo.db” where ExpNo is the experiment number defined into the common OpenC2X configuration file.
 
 
+![Figue 5](/uploads/cv-2-x/picture-5.png "Figure 5")
 
 ## Accessing Grafana: 
 The Grafana service can be accessed using the address http://vpnIpAddress:3000 in a browser hosted by a machine that has access to the experiment VPN.
@@ -284,3 +300,5 @@ The panel is presented in Figure 6. The panels depict the time variation of:
 •	Bit Errors
 •	Bit Error Rate.
 
+
+![Figue 6](/uploads/cv-2-x/picture-6.png "Figure 6")
