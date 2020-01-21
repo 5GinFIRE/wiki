@@ -76,6 +76,8 @@ The following pages present different topics regarding 5GinFIRE services.
 ### 14. Tourist Eyes
 [Tourist Eyes](experiments/TouristEyes)
 
+### 15.C2G-RAN 
+[C2G-RAN](experiments/c2gran)
 
 ## Advanced functionalities
 
