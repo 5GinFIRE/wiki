@@ -9,7 +9,7 @@ In order to run the experiment, at least two nodes required to set up in the sam
 GRC simplify the use of GNURadio by allowing us to create python files graphically instead of creating them in code. The above command opens GRC and creates c2gran-setup.grc file as shown in figure below. This setup file can then be used to initiate radio signals with the desired settings. GRC library contains various blocks in the GRC block path. Most blocks are of two types; Source and Sink. The source blocks are used to generate signals while sink blocks are used to listen and receive for any incoming signals. The blocks are managed under various categories as shown. For example if we want to create a UDP server, we will look for UDP sink block under “Networking Tools” category. 
 
 
-![Figue 1](/uploads/c-2-gran/Picture-1.png "Figure 1")
+![Figue 1](/uploads/c-2-gran/picture-1.png "Figure 1")
 
 For GNURadio to work, we need to create a flowgraph using all the required source/sink blocks. Each block comes with its own properties and parameters. These properties can be changed from defaults to accomplish our desired tasks. Each block also has its own documentation to help users as shown in Figure below:
 
