@@ -150,17 +150,26 @@ Once the OSM is configured the ADOCKER instance can start receiving requests to 
 ### 3.2.1. Web interface overview
 To access the web interface we need to enter the credentials previously set in the `adocker_config.ini`.
 
-![Figure 1: Web interface login](/uploads/adocker/adocker-1.png)
+![Figure 1: Web interface login](/uploads/adocker/adocker-1.png "Figure 1: Web interface login" =250x)
+Figure 1: Web interface login
 
 The main panel contains the information about the hardware we have available on the ADOCKER platform. By default there are no remote nodes, so the interface does not display any resources.
 
+![Figure 2: Main panel](/uploads/adocker/adocker-2.png "Figure 2: Main panel")
+Figure 2: Main panel
 
 From the left panel we can browse the different sections of the interface, like the configuration or the monitoring sections.
 
 # 3.2.2. Adding new nodes
 To add new nodes we need to click the “join node” button, then a popup will give us the command we need to run in the node we want to join to the ADOCKER platform. This node must be a Linux based machine and have Docker installed.
 
+![Figure 3: Join node button and command](/uploads/adocker/adocker-3.png "Figure 3: Join node button and command")
+Figure 3: Join node button and command
+
 Simply copy the command onto the linux terminal and let it run for a while, depending on the speed of the internet connection it may take longer or shorter. In general it does not need more than a few minutes to complete. Once the execution is complete the computer where this command ran is part of the ADOCKER platform and will be shown on the main panel.
+
+![Figure 4: Joined node preview](/uploads/adocker/adocker-4.png "Figure 4: Joined node preview")
+Figure 4: Joined node preview
 
 From now on, the VNFs will be deployed on this node. To delete a node from ADOCKER you just need to click the cross in the right upper corner of the node (red box identified in the next figure).
 
