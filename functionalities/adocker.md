@@ -164,17 +164,17 @@ From the left panel we can browse the different sections of the interface, like 
 To add new nodes we need to click the “join node” button, then a popup will give us the command we need to run in the node we want to join to the ADOCKER platform. This node must be a Linux based machine and have Docker installed.
 
 ![Figure 3: Join node button and command](/uploads/adocker/adocker-3.png "Figure 3: Join node button and command")
-Figure 3: Join node button and command
+> Figure 3: Join node button and command
 
 Simply copy the command onto the linux terminal and let it run for a while, depending on the speed of the internet connection it may take longer or shorter. In general it does not need more than a few minutes to complete. Once the execution is complete the computer where this command ran is part of the ADOCKER platform and will be shown on the main panel.
 
 ![Figure 4: Joined node preview](/uploads/adocker/adocker-4.png "Figure 4: Joined node preview")
-Figure 4: Joined node preview
+> Figure 4: Joined node preview
 
 From now on, the VNFs will be deployed on this node. To delete a node from ADOCKER you just need to click the cross in the right upper corner of the node (red box identified in the next figure).
 
 ![Figure 5: Deleting the node](/uploads/adocker/adocker-5.png "Figure 5: Deleting the node")
-Figure 5: Deleting the node
+> Figure 5: Deleting the node
 
 The node will be deleted from the platform and no other VNFs will run on it. You can disconnect this node from the network or shut it down. The containers and services responsible for the connection of this node to the platform are still running, you can remove it using the Docker rm command. In the current version, it is not possible to stop and remove these containers and its images from the master node, so it must be done manually. If this node join again to the platform in the future, this will be cleaned automatically during the joining process.
 
@@ -182,20 +182,20 @@ The node will be deleted from the platform and no other VNFs will run on it. You
 The web interface also offers a basic monitoring panel to monitor the infrastructure and the services running on it. It makes use of the Grafana [6] technology to show the data recovered from the Kubernetes monitoring framework. In the third button on the left panel on the main window we can access the monitoring section.
 
 ![Figure 6: Access to the monitoring panel](/uploads/adocker/adocker-6.png "Figure 6: Access to the monitoring panel")
-Figure 6: Access to the monitoring panel
+> Figure 6: Access to the monitoring panel
 
 ![Figure 7: Monitoring panel](/uploads/adocker/adocker-7.png "Figure 7: Monitoring panel")
-Figure 7: Monitoring panel - a) Upper graph: CPU load b) Middle graph: RAM usage c) Lower graph: Network load
+> Figure 7: Monitoring panel - a) Upper graph: CPU load b) Middle graph: RAM usage c) Lower graph: Network load
 
 Here we can filter the services and namespaces from where we want to get the monitoring data. The data we can gather are from the CPU, RAM, and the network load. Also we can modify the time window of the displayed data.
 
 ![Figure 8: Monitor panel filters](/uploads/adocker/adocker-8.png "Figure 8: Monitor panel filters")
-Figure 8: Monitor panel filters
+> Figure 8: Monitor panel filters
 
 To use these filters we must select the namespace and the pod we want to monitor in the dropdown lists on the left upper corner. In the namespaces we can select the infrastructures related (kube-system, ns-adocker, openvpn, etc.) or the user namespace where the VNFs are deployed. It is possible to select all the pods on the namespace to compare their loads or select just a pod. These load measurements are shown in a graph where can be seen their evolution in time. To select another time interval, use the options in the top right corner to zoom in/out or slide the time interval backwards or forward. A list of preset options (24h, one month, etc.) can be also selected.
 
 ![Figure 9: Monitor panel controls](/uploads/adocker/adocker-9.png "Figure 9: Monitor panel controls")
-Figure 9: Monitor panel controls
+> Figure 9: Monitor panel controls
 
 ## 3.3. ADOCKER usage
 The infrastructure deployed following the steps described on the previous sections can be used to deploy VNFs through the OSM. For 5GINFIRE this is scheduled uploading an NSD to the 5GINFIRE portal, and selecting your new ADOCKER infrastructure as the target VIM. However, since ADOCKER is based on Kubernetes and Docker, there are some distinctiveness of the infrastructure that must be considered in this process.
