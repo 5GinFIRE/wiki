@@ -104,9 +104,9 @@ Once the playbook execution ends, the ADOCKER platform will be ready to start ad
 The functionality of ADOCKER is added to the 5TONIC OSM as a VIM plugin. It becomes necessary to install that plugin to proper function. The following steps guide you through the installation process of the VIM plugin.
 
 The administrator of the OSM platform have to get the VIM Plugin files:
-* `vim_adocker.py`
-*` adocker_client.py`
-* `adocker_api-1.0.0-py2.7.egg`
+*  `vim_adocker.py`
+* ` adocker_client.py`
+*  `adocker_api-1.0.0-py2.7.egg`
 
 These files will be provided by Gradiant to the 5GINFIRE consortium and the 5TONIC administrators. This action will be performed only once, the first time the ADOCKER VIM is installed on the OSM instance. The administrator has to copy these files to the installation folder of the OSM platform `<OSM_INSTALL_FOLDER>`.
 
@@ -116,11 +116,19 @@ The next steps are to configure OSM to recognize and use the VIM plugin.
 
 First, create an Openmano tenant, if not already done with this command:
 
+
+```sh
 $> openmano tenant-create osm
+```
+
 
 And export its name as environment variable:
 
+
+```sh
 $> export OPENMANO_TENANT=osm
+```
+
 
 Next, execute datacenter-create and datacenter-attach instructions to add the ADOCKER functionality, where `<access-URL>` is the URL where ADOCKER Middleware is listening, and `<tenant-user->` and `<tenant-password>` are the credentials set on the adocker_config.ini file in the [ADOCKER] section.
 
@@ -140,7 +148,9 @@ These actions, except copying the VIM Plugin files in the OSM installation folde
 Once the OSM is configured the ADOCKER instance can start receiving requests to deploy VNFs from the OSM. However, ADOCKER needs to set up at least one remote/worker node in order to schedule the deployment of the VNFs. The addition and deletion of the remote worker nodes is done through a small web interface exposed in the ADOCKER master node in the 80 port.
 
 ### 3.2.1. Web interface overview
-To access the web interface we need to enter the credentials previously set in the adocker_config.ini.
+To access the web interface we need to enter the credentials previously set in the `adocker_config.ini`.
+
+![Figure 1: Web interface login](/uploads/adocker/ADOCKER-1.png)
 
 The main panel contains the information about the hardware we have available on the ADOCKER platform. By default there are no remote nodes, so the interface does not display any resources.
 
