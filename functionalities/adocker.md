@@ -150,7 +150,7 @@ Once the OSM is configured the ADOCKER instance can start receiving requests to 
 ### 3.2.1. Web interface overview
 To access the web interface we need to enter the credentials previously set in the `adocker_config.ini`.
 
-![Figure 1: Web interface login](/uploads/adocker/ADOCKER-1.png)
+![Figure 1: Web interface login](/uploads/adocker/adocker-1.png)
 
 The main panel contains the information about the hardware we have available on the ADOCKER platform. By default there are no remote nodes, so the interface does not display any resources.
 
