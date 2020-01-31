@@ -155,7 +155,7 @@ To access the web interface we need to enter the credentials previously set in t
 
 The main panel contains the information about the hardware we have available on the ADOCKER platform. By default there are no remote nodes, so the interface does not display any resources.
 
-![Figure 2: Main panel](/uploads/adocker/adocker-2.png "Figure 2c: Main panel")
+![Figure 2: Main panel](/uploads/adocker/adocker-2c.png "Figure 2: Main panel")
 > Figure 2: Main panel
 
 From the left panel we can browse the different sections of the interface, like the configuration or the monitoring sections.
