@@ -42,4 +42,153 @@ Although the combination of the different plugins should be able to provide an u
 A basic monitoring framework (previously developed by Gradiant) has been already integrated in some of the tools used to develop the ADOCKER platform. As this functionality seemed to be helpful, it has been included in ADOCKER platform. However, the integration into 5GINFIRE or OSM monitoring stack is not included.
 This monitoring framework allows to know the load created by any of the VNFs and systems running on the platform. These load measurements include the RAM, CPU and network load, and can be visualized on a time graph, using time windows of different size and starting on different time instants.
 
+# 3. User manual
+This sections explains how to deploy, manage and connect ADOCKER to the 5GINFIRE platform.
+
+## 3.1. Installation process
+The ADOCKER platform is based on two different types of nodes. The master node and the remote/worker node. The first one is where the management services and the kubernetes master are deployed. This is also the node that has to be joined to the 5GINFIRE VPN and connected to the 5TONIC hosted OSM. The second one is where the VNFs are deployed. It may be any number of remote/worker nodes and they can be far from the master node. They can be also easily added and removed from the platform at any time and any number of times.
+
+### 3.1.1. Master node installation
+The installation of the master node is fully automated and is performed through an Ansible [5] playbook. Before the installation we only need to configure the adocker_config.ini configuration file before launching the playbook
+
+
+```text
+[MASTER_NODE]
+host=123.123.123.123
+
+user=ubuntu
+
+# if not provided, passwordless communication between this
+# computer and the masternode must be enabled. Not needed
+# if host=localhost.
+ssh_pass=ubuntu_password
+become_pass=sudo_password
+
+[ADOCKER]
+# Admin is not allowed
+username=adocker_username
+password=adocker_password
+
+[5TONIC_VPN]
+addr_pool=10.154.100.0/24
+
+ca_path=/path/to/the/ca/certificate/file
+
+client_cert_path=/path/to/the/client/certificate/file
+
+# don’t set a password for the key file
+client_key_path=/path/to/the/client/key/file
+
+# if not set a basic template will be used
+client_conf_path=/path/to/the/client/configuration/file
+
+# if needed
+ta_file_path=/path/to/the/ta/file
+
+```
+
+Once this configuration file is filled with the required parameters, we can launch the Ansible playbook.
+
+
+```sh
+ansible-playbook master_install.yml
+```
+
+
+The playbook will install all the needed software in the given host and setup the ADOCKER platform. If there is any problem during the installation of the ADOCKER platform the playbook will be stopped and some information about the problem will be provided. Please verify that the problem is not a misconfiguration or it is not caused by a problem in your infrastructure before asking Gradiant for support.
+
+Once the playbook execution ends, the ADOCKER platform will be ready to start adding worker nodes, but before deploying VNFs through the OSM, the OSM must be configured with this new VIM in the 5TONIC infrastructure.
+
+
+### 3.1.2. 5TONIC installation for the new VIM
+The functionality of ADOCKER is added to the 5TONIC OSM as a VIM plugin. It becomes necessary to install that plugin to proper function. The following steps guide you through the installation process of the VIM plugin.
+
+The administrator of the OSM platform have to get the VIM Plugin files:
+* `vim_adocker.py`
+*` adocker_client.py`
+* `adocker_api-1.0.0-py2.7.egg`
+
+These files will be provided by Gradiant to the 5GINFIRE consortium and the 5TONIC administrators. This action will be performed only once, the first time the ADOCKER VIM is installed on the OSM instance. The administrator has to copy these files to the installation folder of the OSM platform `<OSM_INSTALL_FOLDER>`.
+
+`<OSM_INSTALL_FOLDER>/openmano/osm_ro/`
+
+The next steps are to configure OSM to recognize and use the VIM plugin.
+
+First, create an Openmano tenant, if not already done with this command:
+
+$> openmano tenant-create osm
+
+And export its name as environment variable:
+
+$> export OPENMANO_TENANT=osm
+
+Next, execute datacenter-create and datacenter-attach instructions to add the ADOCKER functionality, where `<access-URL>` is the URL where ADOCKER Middleware is listening, and `<tenant-user->` and `<tenant-password>` are the credentials set on the adocker_config.ini file in the [ADOCKER] section.
+
+
+```sh
+$> openmano datacenter-create adocker <access-URL>  --type=adocker
+$> openmano datacenter-attach adocker \
+--vim-tenant-name=”osm” \
+--user=<tenant-user> \
+--password=<tenant-password>
+```
+
+
+These actions, except copying the VIM Plugin files in the OSM installation folder, must be performed every time a new ADOCKER instance is configured, as they are different VIMs of the same type.
+
+## 3.2. Infrastructure management
+Once the OSM is configured the ADOCKER instance can start receiving requests to deploy VNFs from the OSM. However, ADOCKER needs to set up at least one remote/worker node in order to schedule the deployment of the VNFs. The addition and deletion of the remote worker nodes is done through a small web interface exposed in the ADOCKER master node in the 80 port.
+
+### 3.2.1. Web interface overview
+To access the web interface we need to enter the credentials previously set in the adocker_config.ini.
+
+The main panel contains the information about the hardware we have available on the ADOCKER platform. By default there are no remote nodes, so the interface does not display any resources.
+
+
+From the left panel we can browse the different sections of the interface, like the configuration or the monitoring sections.
+
+# 3.2.2. Adding new nodes
+To add new nodes we need to click the “join node” button, then a popup will give us the command we need to run in the node we want to join to the ADOCKER platform. This node must be a Linux based machine and have Docker installed.
+
+Simply copy the command onto the linux terminal and let it run for a while, depending on the speed of the internet connection it may take longer or shorter. In general it does not need more than a few minutes to complete. Once the execution is complete the computer where this command ran is part of the ADOCKER platform and will be shown on the main panel.
+
+From now on, the VNFs will be deployed on this node. To delete a node from ADOCKER you just need to click the cross in the right upper corner of the node (red box identified in the next figure).
+
+The node will be deleted from the platform and no other VNFs will run on it. You can disconnect this node from the network or shut it down. The containers and services responsible for the connection of this node to the platform are still running, you can remove it using the Docker rm command. In the current version, it is not possible to stop and remove these containers and its images from the master node, so it must be done manually. If this node join again to the platform in the future, this will be cleaned automatically during the joining process.
+
+### 3.2.3. Infrastructure and VNFs monitoring
+The web interface also offers a basic monitoring panel to monitor the infrastructure and the services running on it. It makes use of the Grafana [6] technology to show the data recovered from the Kubernetes monitoring framework. In the third button on the left panel on the main window we can access the monitoring section.
+
+
+a) Upper graph: CPU load b) Middle graph: RAM usage c) Lower graph: Network load
+
+Here we can filter the services and namespaces from where we want to get the monitoring data. The data we can gather are from the CPU, RAM, and the network load. Also we can modify the time window of the displayed data.
+
+To use these filters we must select the namespace and the pod we want to monitor in the dropdown lists on the left upper corner. In the namespaces we can select the infrastructures related (kube-system, ns-adocker, openvpn, etc.) or the user namespace where the VNFs are deployed. It is possible to select all the pods on the namespace to compare their loads or select just a pod. These load measurements are shown in a graph where can be seen their evolution in time. To select another time interval, use the options in the top right corner to zoom in/out or slide the time interval backwards or forward. A list of preset options (24h, one month, etc.) can be also selected.
+
+
+## 3.3. ADOCKER usage
+The infrastructure deployed following the steps described on the previous sections can be used to deploy VNFs through the OSM. For 5GINFIRE this is scheduled uploading an NSD to the 5GINFIRE portal, and selecting your new ADOCKER infrastructure as the target VIM. However, since ADOCKER is based on Kubernetes and Docker, there are some distinctiveness of the infrastructure that must be considered in this process.
+
+### 3.3.1 VNF development
+VNFs deployed on ADOCKER must be running on Docker containers. ADOCKER infrastructure is based on Docker (Hypervisor) and Kubernetes (Orchestrator), so it can handle only Docker containers. If the VNF consist on a service running inside a VM, it may be easy to turn it into a Docker container, but if it’s more related to the VM kernel or architecture it may become hard to achieve. Also, if the VNF is a new development, it’s easier to design it to be easily adaptable to this infrastructure. In any case the VNF developers are expected to adapt their VNFs to the platform where they are going to deploy them.
+
+### 3.3.2 Networking
+Due to the limitations on the ADOCKER networking technologies there are some features that are not available:
+Isolated networks: PARTIAL SUPPORT. You can create as many networks as needed, each network is isolated and they support broadcasting. Level 2 connectivity is only available on single node deployments, so don’t expect it to work in any case.
+Multiple NICs per container: PARTIAL SUPPORT. Due to the limitations of the underlying CNI technology, multiple NICs can be added to a container, but only two networks can be attached to the same container. If more NICs are added, they must be assigned to the same networks. However, this limitation is seen as a bug by this CNI technology developers, so it’s expected to be solved at some point in the future.
+Service Function Chaining: NOT SUPPORTED. No available networking solution for Docker/Kubernetes is able to offer this feature, so it’s not supported.
+
+### 3.3.3 Container-VM environment
+ADOCKER does not allow the deployment of VMs in its infrastructure. Although, since its connected to the 5GINGIRE VPN, an hybrid Container-VM environment can be achieved using multi-site deployment. If a more closed hybrid environment is needed, there are two other ways of achieving it. However, be aware that they are not recommended as they can produce unstable behaviours on the infrastructure, the VNFs and the network connectivity. 
+
+The first way is to add a VM as an ADOCKER worker node. In this case the containers will be deployed on a VM running alongside the VM-based VNFs. The second one is to add as an ADOCKER worker a machine with a VM hypervisor installed. In this case the VMs and the containers will be running on the same hardware. The main flaw with both approaches is that the VMs and the containers are managed by two different systems, without knowing about the existence of each other.
+
+# References
+* http://5GINFIRE-5g.eu/ © 5GINFIRE consortium 2017
+* https://www.docker.com/ Docker
+* https://kubernetes.io/ Kubernetes
+* https://osm.etsi.org/ Open Source MANO
+* https://www.ansible.com/ Ansible
+* https://grafana.com/ Grafana
 
