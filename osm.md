@@ -4,7 +4,7 @@
 # The 5GinFIRE MANO platform
 The 5GinFIRE MANO platform is the system that enables the management and orchestration of network services (NS), potentially composed of multiple VxFs, across the NFV experimental infrastructures provided by 5GinFIRE partners. To fulfill this objective, the platform offers a northbound interface to the 5GinFIRE portal, enabling the operations that are needed to support the execution of experiments (e.g., onboarding a NS and a VxF). A simplified overview of the 5GinFIRE MANO platform is depicted in the figure below.
 
-![Mano Platformv 2](/uploads/5-tonic/mano-platformv-3.png "Mano Platformv 3")
+![Mano Platformv 2](/uploads/5-tonic/mano-platform-v-4.png "Mano Platformv 4")
 
 The platform is based on the ETSI-hosted [Open Source MANO (OSM) project](https://osm.etsi.org/), which has been adopted by 5GinFIRE to provide the functionalities of a NFV orchestrator, supporting the management and coordination of computing, storage and network resources at the diverse experimental infrastructures, as well as the lifecycle management of network services. With this purpose, the OSM stack interacts with the Virtualized Infrastructure Managers (VIMs) deployed by 5GinFIRE partners. 
 
