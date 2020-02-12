@@ -5,6 +5,7 @@
 ## Experiment Overview 
 The idea of this experiment is to scale test the video stream in a simulated 5G test environment to check if it is feasible to carry out the potential number of required emergency video calls to a satisfactory quality level, in a city with a population of several million people and multiple ambulances. 
 
+![Figure1](/uploads/red-zinc-emergency-video/fig-1.png "Paramedic Use Case")
 **Figure 1 - Paramedic Use Case**
 
 The idea of this experiment is to scale test the video stream in a simulated 5G test environment to check if it is feasible to carry out the potential number of required emergency video calls to a satisfactory quality level, in a city such as Madrid. Madrid has a population of several million people and multiple ambulances. 
@@ -17,6 +18,8 @@ The method of the experiment is:
 ## Experiment Display
 To carry out the tests planed, the following structure, Figure 2 is the configuration used to capture the results. 
 
+
+![Figure2](/uploads/red-zinc-emergency-video/fig-2.png "Experiment Deployment")
 **Figure 2 - Experiment Deployment**
 
 
