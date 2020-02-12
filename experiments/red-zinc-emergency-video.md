@@ -252,7 +252,3 @@ nsd:nsd-catalog:
                     ip-address: 10.4.32.242
                     vnfd-connection-point-ref: vnf-data
 ```
-
-
-## Results
-
