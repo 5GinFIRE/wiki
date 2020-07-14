@@ -3,6 +3,7 @@
 
 ![5 Ginfire Logo](/uploads/5-ginfire-logo.png "5 Ginfire Logo")
 # Robotview 5G - Smart City Robotic Surveilance Platform
+In 2018, NETICTECH was conducting research work related to real-time transmission of video feeds via wireless networks. The experiments, funded by the Horizon 2020 EU programme. The research focused on the video quality and transmission technology, and it did not include facial recognition or personal data processing capabilities. There has been no follow-up to this work, which concluded in 2018 and has not proceeded beyond the simulation stage. No personal data was processed or gathered during the experiment.
 
 ![Robotview Robot Pic](/uploads/robot-view-5-g/robotview-robot-pic.jpg "Robotview Robot Pic")
 
